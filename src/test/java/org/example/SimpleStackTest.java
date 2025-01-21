@@ -37,6 +37,10 @@ class   SimpleStackTest {
         assertEquals(1, stack.getSize(),"The stack must constain 1 item");
         assertSame( item, stack.peek(),"The pushed item must be is on top of the stack");
 
+
+        // When we "pop" the stack, should throws an EmptyStackException.
+        //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
+
         // Given a new item to add
         Item item2 = new SimpleItem();
 
@@ -47,10 +51,11 @@ class   SimpleStackTest {
         assertFalse(stack.isEmpty(), "The stack must be not empty");
         assertEquals(2, stack.getSize(),"The stack must constain 2 items");
         assertSame( item2, stack.peek(),"The pushed item must be on top of the stack");
+        assertSame( item2, stack.pop(),"The pushed item must be is on top of the stack");
+
     }
 
     @Test
-    @Disabled
     @DisplayName("Test limit when trying to pop an empty stack")
     public void testPopOnEmptyStack()  {
         // Given an empty stack
@@ -59,5 +64,16 @@ class   SimpleStackTest {
         // When we "pop" the stack, should throws an EmptyStackException.
         //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
         assertThrows(EmptyStackException.class, stack::pop, "EmptyStackException not thrown");
+    }
+
+    @Test
+    @DisplayName("Test limit when trying to pop an empty stack")
+    public void testPeekOnEmptyStack()  {
+        // Given an empty stack
+        Stack stack = new SimpleStack();
+
+        // When we "pop" the stack, should throws an EmptyStackException.
+        //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
+        assertThrows(EmptyStackException.class, stack::peek, "EmptyStackException not thrown");
     }
 }

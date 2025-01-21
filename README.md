@@ -1,16 +1,18 @@
 # R4-02 Qualité de développement - SimpleStackTest
 
-### NOM : XXX
-### Prénom : YYY
+### NOM : Cambon
+
+### Prénom : Mathias
+
 ### Groupe de TP :
+
 - [ ] A1-A2
 - [ ] A3-A4
-- [ ] D
+- [X] D
 
 ### Consignes générales
 
 - Le travail à faire est décrit dans le document `ACTIVITE.md`.
-
 
 ### Consignes sur l'utilisation de Git et Github
 
@@ -22,13 +24,13 @@ commitez et pushez sur Github votre projet mis à jour avec comme message de com
 
 ### Rappel Git
 
-Pour utiliser Git, la configuration de votre identité Git doit être opérante. 
+Pour utiliser Git, la configuration de votre identité Git doit être opérante.
 Si ce n'est pas le cas, voici un rappel des commandes à exécuter pour effectuer
 la configuration.  
 `git config --global user.name "mon_user_name"`  
 `git config --global user.email "mon_adresse"`  
-où "mon_user_name" est à remplacer par votre nom d'utilisateur GitHub et "mon_adresse" est est à remplacer par votre 
-adresse électronique utilisée pour créer votre compte GitHub. Ensuite, pour vérifier votre configuration, vous pouvez 
+où "mon_user_name" est à remplacer par votre nom d'utilisateur GitHub et "mon_adresse" est est à remplacer par votre
+adresse électronique utilisée pour créer votre compte GitHub. Ensuite, pour vérifier votre configuration, vous pouvez
 utiliser la commande  
 `git config --global -l`
 

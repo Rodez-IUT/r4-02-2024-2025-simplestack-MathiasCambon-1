@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Test behaviour of a SimpleStack")
-class SimpleStackTest {
+class   SimpleStackTest {
 
     @Test
     @DisplayName("Test the state of a newly created slack")

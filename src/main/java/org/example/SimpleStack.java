@@ -30,7 +30,7 @@ public class SimpleStack implements Stack {
 
     /**
      * Pushes an item onto the top of this stack.
-     * null item is allowed.
+     *  null item is allowed.
      *
      * @param item an item of the stack
      */

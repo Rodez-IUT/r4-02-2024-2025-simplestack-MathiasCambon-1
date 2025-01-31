@@ -1,5 +1,6 @@
 package org.example;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,12 +10,20 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Test behaviour of a SimpleStack")
 class   SimpleStackTest {
 
+    private Stack stack;
+    private Item item;
+    private Item item2;
+
+    @BeforeEach
+    @DisplayName("Creation of a stack and two items")
+    public void setUp() {
+        stack = new SimpleStack();
+
+    }
+
     @Test
     @DisplayName("Test the state of a newly created slack")
     public void testCreateEmptyStack() { // Test case
-
-        // When a freshly stack is created
-        Stack stack = new SimpleStack();
 
         // Then… (oracle)
         assertTrue(stack.isEmpty(), "A new stack must be empty");
@@ -22,45 +31,34 @@ class   SimpleStackTest {
     }
 
     @Test
-    @DisplayName("Test the push of items")
-    public void testPush() throws EmptyStackException {
+    @DisplayName("Test pushing a single item to an empty stack")
+    public void testPushSingleItem() throws EmptyStackException {
 
-        // Given an empty stack and an item
-        Stack stack = new SimpleStack();
-        Item item = new SimpleItem();
-
-        // When the item is pushed in the stack
+        // When the item is pushed onto the stack
         stack.push(item);
 
         // Then…
         assertFalse(stack.isEmpty(), "The stack must not be empty");
-        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
-        assertSame( item, stack.peek(),"The pushed item must be is on top of the stack");
-
-
-        // When we "pop" the stack, should throws an EmptyStackException.
-        //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
-
-        // Given a new item to add
-        Item item2 = new SimpleItem();
-
-        // When we add the new item
-        stack.push(item2);
-
-        // then...
-        assertFalse(stack.isEmpty(), "The stack must be not empty");
-        assertEquals(2, stack.getSize(),"The stack must constain 2 items");
-        assertSame( item2, stack.peek(),"The pushed item must be on top of the stack");
-
+        assertEquals(1, stack.getSize(), "The stack must contain 1 item");
+        assertSame(item, stack.peek(), "The pushed item must be on top of the stack");
     }
 
+    @Test
+    @DisplayName("Test pushing a second item to a non-empty stack")
+    public void testPushSecondItem() throws EmptyStackException {
 
+        // When the second item is pushed onto the stack
+        stack.push(item2);
+
+        // Then…
+        assertFalse(stack.isEmpty(), "The stack must not be empty");
+        assertEquals(2, stack.getSize(), "The stack must contain 2 items");
+        assertSame(item2, stack.peek(), "The pushed item must be on top of the stack");
+    }
 
     @Test
     @DisplayName("Test limit when trying to pop an empty stack")
     public void testPopOnEmptyStack()  {
-        // Given an empty stack
-        Stack stack = new SimpleStack();
 
         // When we "pop" the stack, should throws an EmptyStackException.
         //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
@@ -70,8 +68,6 @@ class   SimpleStackTest {
     @Test
     @DisplayName("Test limit when trying to pop an empty stack")
     public void testPeekOnEmptyStack()  {
-        // Given an empty stack
-        Stack stack = new SimpleStack();
 
         // When we "pop" the stack, should throws an EmptyStackException.
         //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
@@ -80,7 +76,18 @@ class   SimpleStackTest {
 
     @Test
     @DisplayName("Test the pop of the item")
-    public void testPop() {
+    public void testPop() throws EmptyStackException {
 
+
+        stack.push(item2);
+
+        // When we pop the stack
+        Item poppedItem = stack.pop();
+
+        // Then...
+        assertSame(item2, poppedItem, "The popped item should be the top item");
+        assertEquals(1, stack.getSize(), "The stack should contain 1 item after popping");
     }
+
+
 }
